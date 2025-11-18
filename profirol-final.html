@@ -93,89 +93,29 @@
       line-height: inherit;
     }
 
-    /* Hide mobile-only by default */
+    /* Hide mobile-only by default using max-height method */
     .mobile-only {
-      display: none !important;
       max-height: 0 !important;
       overflow: hidden !important;
       mso-hide: all;
+      font-size: 0 !important;
+      line-height: 0 !important;
     }
 
-    /* iOS Mail support */
-    @supports (-webkit-overflow-scrolling: touch) {
-      @media only screen and (max-width: 599px) {
-        .desktop-only {
-          display: none !important;
-          max-height: 0 !important;
-          overflow: hidden !important;
-        }
-        .mobile-only {
-          display: block !important;
-          max-height: none !important;
-        }
-        .stack-column {
-          display: block !important;
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-        .logo-cell img {
-          display: none !important;
-        }
-        .logo-cell h2 {
-          display: block !important;
-          font-size: 50px !important;
-          font-weight: 700 !important;
-          margin: 0 !important;
-          padding: 20px 15px 0 15px !important;
-          line-height: 1.1 !important;
-          color: #000000 !important;
-          letter-spacing: 8px !important;
-        }
-        .info-cell {
-          padding: 0 15px 0 15px !important;
-        }
-        .info-cell h4 {
-          font-size: 27px !important;
-          padding: 5px 0 0 0 !important;
-        }
-        .info-cell p {
-          padding: 4px 0 5px 0 !important;
-        }
-        .contact-table {
-          padding: 0 !important;
-        }
-        .contact-table-last {
-          margin-bottom: 0 !important;
-        }
-        .social-cell {
-          text-align: center !important;
-          padding: 0 15px 15px 15px !important;
-        }
-        .social-icons {
-          padding: 0 !important;
-        }
-        .website-link {
-          padding: 8px 0 0 0 !important;
-        }
-        .bottom-img {
-          max-width: 100% !important;
-          height: auto !important;
-          width: 400px !important;
-          padding-left: 0 !important;
-        }
-      }
-    }
-
-    /* Standard media queries for Apple Mail, Outlook Mobile, others */
+    /* Standard media queries for mobile */
     @media only screen and (max-width: 599px) {
       .desktop-only {
         display: none !important;
         max-height: 0 !important;
         overflow: hidden !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
       }
       .mobile-only {
         display: block !important;
         max-height: none !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
       }
       .stack-column {
         display: block !important;
@@ -188,8 +128,10 @@
       }
       .logo-cell img {
         display: none !important;
+        max-height: 0 !important;
       }
       .logo-cell h2 {
+        display: block !important;
         font-size: 50px !important;
         font-weight: 700 !important;
         margin: 0 !important;
@@ -315,11 +257,13 @@
                   <tr>
                     <td class="logo-cell" align="center" style="padding:0; margin:0; width:180px; background-color:#ffffff;">
                       <!-- Desktop logo -->
-                      <div class="desktop-only">
+                      <div class="desktop-only" style="mso-hide:none;">
                         <img src="https://signature.profirol.sk/new/images/logo_profirol_left.png" alt="PROFIROL" width="180" height="180" style="display:block; border:0; outline:none; text-decoration:none; max-width:180px;">
                       </div>
                       <!-- Mobile text logo -->
-                      <h2 class="mobile-only" style="display:none; margin:0; padding:20px 15px 0 15px; font-size:50px; line-height:1.1; font-weight:700; color:#000000; letter-spacing:8px; font-family:'gt-ultra',Arial,sans-serif; mso-hide:all;">PROFIROL</h2>
+                      <div class="mobile-only" style="max-height:0; overflow:hidden; mso-hide:all; font-size:0; line-height:0;">
+                        <h2 style="margin:0; padding:20px 15px 0 15px; font-size:50px; line-height:1.1; font-weight:700; color:#000000; letter-spacing:8px; font-family:'gt-ultra',Arial,sans-serif;">PROFIROL</h2>
+                      </div>
                     </td>
                   </tr>
                 </table>
@@ -361,7 +305,7 @@
                 <!-- Social column -->
                 <table class="stack-column" cellspacing="0" cellpadding="0" border="0" align="left" role="presentation" style="mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; width:140px; max-width:140px; background-color:#ffffff;">
                   <tr>
-                    <td class="social-cell" align="right" height="180" style="margin:0; width:140px; background-color:#ffffff;">
+                    <td class="social-cell" align="right" height="180" style="padding:40px 0 0 15px; margin:0; width:140px; vertical-align:top; background-color:#ffffff;">
                       <table cellspacing="0" cellpadding="0" border="0" align="right" role="presentation" style="mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse;">
                         <tr>
                           <td class="social-icons" align="right" style="padding:0; font-size:0;">
@@ -411,9 +355,13 @@
               <td class="bottom-img-cell" style="padding:0; margin:0; font-size:0; line-height:0; background-color:#ffffff;">
                 <a href="https://signature.profirol.sk/redirect.php" target="_blank" style="text-decoration:none;">
                   <!-- Desktop banner -->
-                  <img class="desktop-only bottom-img" src="https://signature.profirol.sk/new/images/dotacie_bottom_line_dekstop.png" alt="Dotácie" width="600" height="38" style="display:block; border:0; outline:none; text-decoration:none; max-width:600px;">
+                  <div class="desktop-only" style="mso-hide:none;">
+                    <img class="bottom-img" src="https://signature.profirol.sk/new/images/dotacie_bottom_line_dekstop.png" alt="Dotácie" width="600" height="38" style="display:block; border:0; outline:none; text-decoration:none; max-width:600px;">
+                  </div>
                   <!-- Mobile banner -->
-                  <img class="mobile-only bottom-img" src="https://signature.profirol.sk/new/images/dotacie_bottom_line_mobile.png" alt="Dotácie na vonkajšie tienenie až do 28%" width="400" style="display:none; border:0; outline:none; text-decoration:none; max-width:100%; mso-hide:all;">
+                  <div class="mobile-only" style="max-height:0; overflow:hidden; mso-hide:all; font-size:0; line-height:0;">
+                    <img class="bottom-img" src="https://signature.profirol.sk/new/images/dotacie_bottom_line_mobile.png" alt="Dotácie na vonkajšie tienenie až do 28%" width="400" style="display:block; border:0; outline:none; text-decoration:none; max-width:100%;">
+                  </div>
                 </a>
               </td>
             </tr>
