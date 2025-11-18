@@ -116,51 +116,37 @@
       line-height: inherit;
     }
 
-    /* Standard media queries for mobile */
-    @media only screen and (max-width: 599px) {
-      /* Hide desktop logo */
+    /* MOBILE FIRST: Image hidden by default, text visible */
+    .desktop-logo {
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    /* Desktop: Show image, hide text */
+    @media only screen and (min-width: 600px) {
       .desktop-logo {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        opacity: 0 !important;
-        overflow: hidden !important;
-        mso-hide: all !important;
-        font-size: 0 !important;
-        line-height: 0 !important;
-        max-height: 0 !important;
-      }
-      
-      /* Show mobile text */
-      .mobile-text {
         display: block !important;
-        width: auto !important;
-        height: auto !important;
-        opacity: 1 !important;
+        max-height: none !important;
         overflow: visible !important;
-        font-size: inherit !important;
-        line-height: inherit !important;
+      }
+      .mobile-logo-text {
+        display: none !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+      }
+      .desktop-banner {
+        display: block !important;
         max-height: none !important;
       }
-      
-      /* Hide desktop banner */
-      .desktop-banner {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        opacity: 0 !important;
-        overflow: hidden !important;
-        mso-hide: all !important;
-      }
-      
-      /* Show mobile banner */
       .mobile-banner {
-        display: block !important;
-        width: auto !important;
-        height: auto !important;
-        opacity: 1 !important;
+        display: none !important;
+        max-height: 0 !important;
       }
-      
+    }
+
+    /* Mobile specific adjustments */
+    @media only screen and (max-width: 599px) {
       .stack-column {
         display: block !important;
         width: 100% !important;
@@ -169,15 +155,6 @@
       .logo-cell {
         width: 100% !important;
         text-align: left !important;
-      }
-      .logo-cell h2 {
-        font-size: 50px !important;
-        font-weight: 700 !important;
-        margin: 0 !important;
-        padding: 20px 15px 0 15px !important;
-        line-height: 1.1 !important;
-        color: #000000 !important;
-        letter-spacing: 8px !important;
       }
       .info-cell {
         width: 100% !important;
@@ -296,13 +273,13 @@
                   <tr>
                     <td class="logo-cell" align="center" bgcolor="#ffffff" style="padding:0; margin:0; width:180px; background-color:#ffffff;">
                       
-                      <!-- Desktop logo image -->
-                      <div class="desktop-logo">
+                      <!-- Desktop logo image - HIDDEN by default, shows on desktop -->
+                      <div class="desktop-logo" style="display:none; max-height:0; overflow:hidden;">
                         <img src="https://signature.profirol.sk/new/images/logo_profirol_left.png" alt="PROFIROL" width="180" height="180" style="display:block; border:0; outline:none; text-decoration:none; max-width:180px;">
                       </div>
                       
-                      <!-- Mobile text logo -->
-                      <div class="mobile-text" style="display:none; max-height:0; overflow:hidden; font-size:0; line-height:0; mso-hide:all;">
+                      <!-- Mobile text logo - VISIBLE by default -->
+                      <div class="mobile-logo-text">
                         <h2 style="margin:0; padding:20px 15px 0 15px; font-size:50px; line-height:1.1; font-weight:700; color:#000000; letter-spacing:8px; font-family:'gt-ultra',Arial,sans-serif; background-color:#ffffff;">PROFIROL</h2>
                       </div>
                       
@@ -347,7 +324,7 @@
                 <!-- Social column -->
                 <table class="stack-column" cellspacing="0" cellpadding="0" border="0" align="left" role="presentation" bgcolor="#ffffff" style="mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; width:140px; max-width:140px; background-color:#ffffff;">
                   <tr>
-                    <td class="social-cell" align="right" height="180" bgcolor="#ffffff" style="padding:0px 0 0 15px; margin:0; width:140px;background-color:#ffffff;">
+                    <td class="social-cell" align="right" height="180" bgcolor="#ffffff" style="padding:0px 0 0 15px; margin:0; width:140px; background-color:#ffffff;">
                       <table cellspacing="0" cellpadding="0" border="0" align="right" role="presentation" bgcolor="#ffffff" style="mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; background-color:#ffffff;">
                         <tr>
                           <td class="social-icons" align="right" bgcolor="#ffffff" style="padding:0; font-size:0; background-color:#ffffff;">
@@ -397,13 +374,13 @@
               <td class="bottom-img-cell" bgcolor="#ffffff" style="padding:0; margin:0; font-size:0; line-height:0; background-color:#ffffff;">
                 <a href="https://signature.profirol.sk/redirect.php" target="_blank" style="text-decoration:none;">
                   
-                  <!-- Desktop banner -->
-                  <div class="desktop-banner">
+                  <!-- Desktop banner - hidden by default, shows on desktop -->
+                  <div class="desktop-banner" style="display:none; max-height:0; overflow:hidden;">
                     <img class="bottom-img" src="https://signature.profirol.sk/new/images/dotacie_bottom_line_dekstop.png" alt="Dotácie" width="600" height="38" style="display:block; border:0; outline:none; text-decoration:none; max-width:600px;">
                   </div>
                   
-                  <!-- Mobile banner -->
-                  <div class="mobile-banner" style="display:none; mso-hide:all;">
+                  <!-- Mobile banner - visible by default -->
+                  <div class="mobile-banner">
                     <img class="bottom-img" src="https://signature.profirol.sk/new/images/dotacie_bottom_line_mobile.png" alt="Dotácie na vonkajšie tienenie až do 28%" width="400" style="display:block; border:0; outline:none; text-decoration:none; max-width:100%;">
                   </div>
                   
